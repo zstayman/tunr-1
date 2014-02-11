@@ -1,8 +1,7 @@
-
 development:
   adapter: postgresql
   encoding: unicode
-  database: tunr_db
+  database: tunr_development
   pool: 5
   username: ga-pj
   host: localhost

@@ -6,38 +6,54 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Artist.create(
-  name: "Calvin Harris",
+Song.destroy_all
+Artist.destroy_all
+
+kesha = Artist.create(
+  name: "Kesha",
   genre: "House",
-  photo_url: "http://goo.gl/b2kpJz"
-  )
+  photo_url: "http://goo.gl/QWhCyk"
+)
 
 Song.create(
-  title: "We Found Love",
-  year: 2011,
-  artist_id: "1"
-  )
-
-Song.create(
-  title: "Sweet Nothing",
+  title: "TiK ToK",
   year: 2012,
-  artist_id: "1"
-  )
+  artist: kesha
+)
 
-Artist.create(
-  name: "Michael Jackson",
+Song.create(
+  title: "Your Love is My Drug",
+  year: 2012,
+  artist: kesha
+)
+
+
+Song.create(
+  title: "Die Young",
+  year: 2013,
+  artist: kesha
+)
+
+pitbull = Artist.create(
+  name: "Pitbull",
   genre: "Pop",
-  photo_url: "http://goo.gl/ri4hIG"
-  )
+  photo_url: "http://goo.gl/cHrs67"
+)
 
 Song.create(
-  title: "Thriller",
-  year: 1982,
-  artist_id: "2"
-  )
+  title: "I Know You Want Me (Calle Ocho)",
+  year: 2009,
+  artist: pitbull
+)
+
+pitbull_ft_kesha = Artist.create(
+  name: "Pitbull ft. Kesha",
+  genre: "Pop",
+  photo_url: "http://goo.gl/cHrs67"
+)
 
 Song.create(
-  title: "Bad",
-  year: 1987,
-  artist_id: "2"
-  )
+  title: "Timber",
+  year: 2013,
+  artist_id: pitbull_ft_kesha
+)
