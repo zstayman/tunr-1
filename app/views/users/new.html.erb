@@ -1,0 +1,52 @@
+<h2>Create a new user here!</h2>
+
+<form action="/users" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>" />
+
+  <label>
+    Email:
+    <input type="email" name="email" />
+  </label>
+  <br/>
+
+  <label>
+    Password:
+    <input type="password" name="password" />
+  </label>
+  <br/>
+
+  <label>
+    First Name:
+    <input type="text" name="first_name" />
+  </label>
+  <br/>
+
+  <label>
+    Last Name:
+    <input type="text" name="last_name" />
+  </label>
+  <br/>
+
+  <label>
+    Date of Birth:
+    <input type="date" name="dob" />
+  </label>
+  <br/>
+
+  <label>
+    Gender:
+    <label for="gender_male">M</label>
+    <input id="gender_male" type="radio" name="gender" value="M" />
+    <label for="gender_female">F</label>
+    <input id="gender_female" type="radio" name="gender" value="F" />
+  </label>
+  <br/>
+
+  <label>
+    Facebook URL:
+    <input type="url" name="facebook_link" />
+  </label>
+  <br/>
+
+  <button>Join!</button>
+</form>
