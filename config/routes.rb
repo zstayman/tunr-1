@@ -1,5 +1,5 @@
 Tunr::Application.routes.draw do
-  resources :artists, except: :destroy do
-    resources :songs, only: [:new, :edit, :create]
+  resources :artists do
+    resources :songs, except: [:index, :show]
   end
 end

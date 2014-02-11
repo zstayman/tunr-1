@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
-  self.before_action :load_artist, only: [:new, :create, :edit, :update, :destroy]
-  self.before_action :load_song, only: [:edit, :update, :destroy]
 
+  self.before_action :load_artist
+  self.before_action :load_song, only: [:edit, :update, :destroy]
 
   def new
   end
@@ -24,23 +24,22 @@ class SongsController < ApplicationController
     redirect_to "/artists/#{@artist.id}"
   end
 
-
   private
 
-    def load_artist
-      return @artist = Artist.find(params[:artist_id])
-    end
+  def load_artist
+    return @artist = Artist.find(params[:artist_id])
+  end
 
-    def load_song
-      return @song = @artist.songs.find(params[:id])
-    end
+  def load_song
+    return @song = @artist.songs.find(params[:id])
+  end
 
-    def song_params
-      return {
-        title: params[:title],
-        year: params[:year],
-        artist_id: params[:artist_id]
-      }
-    end
+  def song_params
+    return {
+      title: params[:title],
+      year: params[:year],
+      artist_id: params[:artist_id]
+    }
+  end
 
 end
