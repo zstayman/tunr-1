@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
+    #logger.debug ">>>>>>>>>>>>> #{@user.errors.messages}"
     redirect_to "/users/#{@user.id}"
   end
 
@@ -33,15 +34,28 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    return {
-      email: params[:email],
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      dob: params[:dob],
-      gender: params[:gender],
-      facebook_link: params[:facebook_link],
-      password: params[:password]
-    }
+
+    if params[:password].empty?
+      return {
+        email: params[:email],
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        dob: params[:dob],
+        gender: params[:gender],
+        facebook_link: params[:facebook_link]
+      }
+    else
+      return {
+        email: params[:email],
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        dob: params[:dob],
+        gender: params[:gender],
+        facebook_link: params[:facebook_link],
+        password: params[:password]
+      }
+    end
+
   end
 
 end
