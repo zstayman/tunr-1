@@ -3,11 +3,17 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:show, :edit, :update, :destroy]
 
   def new
+    #binding.pry
   end
 
   def create
     @user = User.create(user_params)
-    redirect_to "/users/#{@user.id}"
+    
+    if @user.valid?
+      redirect_to "/users/#{@user.id}"
+    else
+      render(:new)
+    end
   end
 
   def show
@@ -17,9 +23,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    #logger.debug ">>>>>>>>>>>>> #{@user.errors.messages}"
-    redirect_to "/users/#{@user.id}"
+    @update_worked = @user.update(user_params)
+    
+    if @update_worked
+      redirect_to "/users/#{@user.id}"
+    else
+      render(:edit)
+    end
   end
 
   def destroy
