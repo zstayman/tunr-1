@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
 
-  self.before_action :load_artist
-  self.before_action :load_song, only: [:edit, :update, :destroy]
+  self.before_action(:load_artist)
+  self.before_action(:load_song, { only: [:edit, :update, :destroy] })
 
   def new
   end

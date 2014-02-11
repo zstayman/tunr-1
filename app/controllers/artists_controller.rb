@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 
-  self.before_action :load_artist, only: [:show, :edit, :update, :destroy]
+  self.before_action(:load_artist, { only: [:show, :edit, :update, :destroy]})
 
   def new
   end
