@@ -4,6 +4,7 @@ class SongsController < ApplicationController
   before_action :load_song, only: [:edit, :update, :destroy]
 
   def new
+    @song = Song.new
   end
 
   def create

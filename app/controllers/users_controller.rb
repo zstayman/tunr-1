@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:show, :edit, :update, :destroy]
 
   def new
-    #binding.pry
+    @user = User.new
   end
 
   def create
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @update_worked = true
   end
 
   def update

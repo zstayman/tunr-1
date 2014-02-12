@@ -3,6 +3,7 @@ class ArtistsController < ApplicationController
   before_action :load_artist, only: [:show, :edit, :update, :destroy]
 
   def new
+    @artist = Artist.new
   end
 
   def create
@@ -22,6 +23,7 @@ class ArtistsController < ApplicationController
   end
 
   def update
+    binding.pry
     @artist.update(artist_params)
     redirect_to artists_path
   end
