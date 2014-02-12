@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     
     if @user.valid?
-      redirect_to "/users/#{@user.id}"
+      redirect_to user_path(@user)
     else
       render(:new)
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @update_worked = @user.update(user_params)
     
     if @update_worked
-      redirect_to "/users/#{@user.id}"
+      redirect_to user_path(@user)
     else
       render(:edit)
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to "/"
+    redirect_to root_path
   end
 
   private

@@ -8,7 +8,7 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.create(song_params)
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   def edit
@@ -16,12 +16,12 @@ class SongsController < ApplicationController
 
   def update
     @song.update(song_params)
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   def destroy
     @song.destroy
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   private
