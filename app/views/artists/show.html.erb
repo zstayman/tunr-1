@@ -6,6 +6,9 @@
 <% @songs.each do |song| %>
   <li><%= song.title %>, 
       <%= song.year %> 
+      <audio controls>
+        <source src="<%= song.preview_url %>">
+      </audio>
       <br/>
       <a href="/artists/<%= @artist.id %>/songs/<%= song.id %>/edit">Edit</a>
       

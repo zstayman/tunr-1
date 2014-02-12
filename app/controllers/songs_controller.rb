@@ -10,7 +10,7 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.artist = @artist
-    @song.preview_url = #somehow get it from API
+    @song.preview_url = get_preview_url(@artist.name, @song.title)
     @song.save
 
     redirect_to artist_path(@artist)
@@ -41,6 +41,14 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:title, :year)
+  end
+
+  def get_preview_url(artist, song)
+    artist = artist.gsub(" ", "+")
+    song = song.gsub(" ", "+")
+    from_itunes = HTTParty.get("http://itunes.apple.com/search?term=#{artist}+#{song}&media=music&entity=musicTrack&limit=1")
+    from_itunes_as_hash = JSON(from_itunes)
+    return from_itunes_as_hash["results"][0]["previewUrl"]
   end
 
 end
