@@ -4,11 +4,15 @@ class SongsController < ApplicationController
   before_action(:load_song, { only: [:edit, :update, :destroy] })
 
   def new
+    @song = Song.new
   end
 
   def create
-    @song = Song.create(song_params)
-    redirect_to "/artists/#{@artist.id}"
+    @song = Song.new(song_params)
+    @song.artist = @artist
+    @song.save
+
+    redirect_to artist_path(@artist)
   end
 
   def edit
@@ -16,12 +20,12 @@ class SongsController < ApplicationController
 
   def update
     @song.update(song_params)
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   def destroy
     @song.destroy
-    redirect_to "/artists/#{@artist.id}"
+    redirect_to artist_path(@artist)
   end
 
   private
@@ -35,11 +39,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    return {
-      title: params[:title],
-      year: params[:year],
-      artist_id: params[:artist_id]
-    }
+    params.require(:song).permit(:title, :year)
   end
 
 end
