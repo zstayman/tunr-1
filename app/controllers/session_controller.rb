@@ -19,7 +19,7 @@ class SessionController < ApplicationController
     else
 
       # the email/password is wrong!
-
+      @message = "This email and password combination does not exist."
       render(:new)
     end
   end
