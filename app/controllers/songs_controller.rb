@@ -10,6 +10,7 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.artist = @artist
+    @song.preview_url = #somehow get it from API
     @song.save
 
     redirect_to artist_path(@artist)
