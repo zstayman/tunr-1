@@ -9,7 +9,7 @@ class SessionController < ApplicationController
     
     # if that user exists and it has a password that
     # was sent
-    if user && (user.password == params[:password])
+    if user && ( user.authenticate(params[:password]) )
       
       # save the user_id in the session hash
       session[:user_id] = user.id
