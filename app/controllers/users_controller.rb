@@ -67,6 +67,9 @@ class UsersController < ApplicationController
       }
     end
 
+    #params.require(:user).permit(:email, :first_name,
+    #  :last_name, :dob, :gender, :facebook_link)
+
   end
 
 end

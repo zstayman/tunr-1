@@ -23,7 +23,6 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    binding.pry
     @artist.update(artist_params)
     redirect_to artists_path
   end
