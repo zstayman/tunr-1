@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     #   first_name: params[:user][:first_name]
     # }
 
-    params.require(:user).permit(:email, :first_name, :last_name, :dob, :gender, :facebook_link, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :dob, :gender, :facebook_link, :password, :password_confirmation)
   end
 
 end
