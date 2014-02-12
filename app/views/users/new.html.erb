@@ -1,6 +1,6 @@
 <h2>Create a new user here!</h2>
 
-<% unless @user.nil? %>
+<% unless @user.nil? || @user.id.nil? %>
   <div id="errors">
     <h3>Errors!</h3>
     <ul>
@@ -11,53 +11,37 @@
   </div>
 <% end %>
 
-<form action="/users" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>" />
-
-  <label>
-    Email:
-    <input type="email" name="email" />
-  </label>
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
   <br/>
 
-  <label>
-    Password:
-    <input type="password" name="password" />
-  </label>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
   <br/>
 
-  <label>
-    First Name:
-    <input type="text" name="first_name" />
-  </label>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
   <br/>
 
-  <label>
-    Last Name:
-    <input type="text" name="last_name" />
-  </label>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
   <br/>
 
-  <label>
-    Date of Birth:
-    <input type="date" name="dob" />
-  </label>
+  <%= f.label "Date of Birth" %>
+  <%= f.date_field :dob %>
   <br/>
 
-  <label>
-    Gender:
-    <label for="gender_male">M</label>
-    <input id="gender_male" type="radio" name="gender" value="M" />
-    <label for="gender_female">F</label>
-    <input id="gender_female" type="radio" name="gender" value="F" />
-  </label>
+  <%= label_tag("Gender:") %>
+  <%= label_tag(:gender_male, "M") %>
+  <%= f.radio_button(:gender, "M", checked: @user.gender == "M") %>
+  <%= label_tag(:gender_male, "F") %>
+  <%= f.radio_button(:gender, "F", checked: @user.gender == "F") %>
+  <br />
+
+  <%= f.label :facebook_link %>
+  <%= f.url_field :facebook_link %>
   <br/>
 
-  <label>
-    Facebook URL:
-    <input type="url" name="facebook_link" />
-  </label>
-  <br/>
-
-  <button>Join!</button>
-</form>
+  <%= f.submit "Join!" %>
+<% end %>

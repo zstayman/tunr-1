@@ -2,14 +2,15 @@
 
 <% @artists.each do |artist| %>
   <a href="<%= artist_path(artist) %>"><img src="<%= artist.photo_url %>" width="300px"/></a><br/>
+
   <p><%= artist.name %></p>
   <%= link_to "Edit", edit_artist_path(artist) %>
-  <form action="/artists/<%= artist.id %>" method="POST" />
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Delete</button>
-  </form>
+  
+  <%= form_tag artist_path(artist), method: "delete" do %>
+    <%= submit_tag("Delete") %>
+  <% end %>
   <br/><br/>
+
 <% end %>
 
 <br/>

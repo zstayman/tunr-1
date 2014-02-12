@@ -1,21 +1,12 @@
-<form action="/artists/<%= @artist.id %>" method="POST" />
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <input type="hidden" name="_method" value="PUT" />
+<%= form_for @artist do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
-  <label>
-    Name:
-    <input type="text" name="name" value="<%= @artist.name %>" />
-  </label>
+  <%= f.label :genre %>
+  <%= f.text_field :genre %>
 
-  <label>
-    Genre:
-    <input type="text" name="genre" value="<%= @artist.genre %>" />
-  </label>
+  <%= f.label :photo_url %>
+  <%= f.url_field :photo_url %>
 
-  <label>
-    Photo URL:
-    <input type="url" name="photo_url" value="<%= @artist.photo_url %>" />
-  </label>
-
-  <button>Update Artist</button>
-</form>
+  <%= f.submit "Update Artist" %>
+<% end %>

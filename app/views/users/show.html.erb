@@ -1,9 +1,7 @@
 <h2>Welcome <%= @user.first_name %>!</h2>
 
-<p><a href="/users/<%= @user.id %>/edit">Edit My Info</a></p>
-<form method="POST" action="/users/<%= @user.id %>">
-  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>" />
-  
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Delete My Account</button>
-</form>
+<p><%= link_to "Edit My Info", edit_user_path(@user) %></p>
+
+<%= form_tag user_path(@user), method: "delete" do %>
+  <%= submit_tag("Delete My Account") %>
+<% end %>

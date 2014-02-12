@@ -1,16 +1,9 @@
-<form action="/artists/<%= @artist.id %>/songs/<%= @song.id %>" method="POST" >
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <input type="hidden" name="_method" value="PUT" />
+<%= form_for [@artist, @song] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-  <label>
-    Title:
-    <input type="text" name="title" value="<%= @song.title %>" />
-  </label>
+  <%= f.label :year %>
+  <%= f.number_field :year %>
 
-  <label>
-    Year:
-    <input type="number" name="year" value="<%= @song.year %>" />
-  </label>
-  
-  <button>Update Song</button>
-</form>
+  <%= f.submit "Update Song" %>
+<% end %>
