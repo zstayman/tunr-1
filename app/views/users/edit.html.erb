@@ -62,4 +62,4 @@
   <button>Save Changes</button>
 </form>
 
-<p><a href="/users/<%= @user.id %>">Return to user home.</a></p>
+<p><%= link_to "Return to user home.", user_path(@user) %></p>
