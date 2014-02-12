@@ -8,7 +8,10 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.create(song_params)
+    @song = Song.new(song_params)
+    @song.artist = @artist
+    @song.save
+
     redirect_to artist_path(@artist)
   end
 
@@ -36,11 +39,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    return {
-      title: params[:title],
-      year: params[:year],
-      artist_id: params[:artist_id]
-    }
+    params.require(:song).permit(:title, :year)
   end
 
 end
