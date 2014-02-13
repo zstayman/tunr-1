@@ -6,9 +6,7 @@ Tunr::Application.routes.draw do
   end
 
   resources :users do
-    resources :songs, only: [:index] do
-
-    end
+    resources :songs, only: [:index]
   end
 
   #resources :sessions, only: [:new, :create, :destroy]
