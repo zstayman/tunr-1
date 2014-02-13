@@ -4,4 +4,5 @@ describe Song do
   it { should belong_to(:artist) }
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:artist) }
+  it { should validate_presence_of(:price) }
 end
