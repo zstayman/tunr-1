@@ -1,7 +1,12 @@
 class SongsController < ApplicationController
 
-  before_action(:load_artist)
+  before_action(:load_artist, only: [:new, :create] )
   before_action(:load_song, { only: [:edit, :update, :destroy] })
+
+  def index
+    @user = User.find_by(id: params[:user_id])
+    @songs = @user.songs
+  end
 
   def new
     @song = Song.new
@@ -21,22 +26,22 @@ class SongsController < ApplicationController
 
   def update
     @song.update(song_params)
-    redirect_to artist_path(@artist)
+    redirect_to artist_path(@song.artist)
   end
 
   def destroy
     @song.destroy
-    redirect_to artist_path(@artist)
+    redirect_to artist_path(@song.artist)
   end
 
   private
 
   def load_artist
-    return @artist = Artist.find(params[:artist_id])
+    return @artist = Artist.find_by(id: params[:artist_id])
   end
 
   def load_song
-    return @song = @artist.songs.find(params[:id])
+    return @song = Song.find_by(id: params[:id])
   end
 
   def song_params
@@ -50,5 +55,4 @@ class SongsController < ApplicationController
     from_itunes_as_hash = JSON(from_itunes)
     return from_itunes_as_hash["results"][0]["previewUrl"]
   end
-
 end

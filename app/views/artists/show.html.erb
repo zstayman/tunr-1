@@ -4,17 +4,8 @@
 <h2>Songs:</h2>
 <ul>
 <% @songs.each do |song| %>
-  <li><%= song.title %>, 
-      <%= song.year %> 
-      <audio controls>
-        <source src="<%= song.preview_url %>">
-      </audio>
-      <br/>
-      <a href="/artists/<%= @artist.id %>/songs/<%= song.id %>/edit">Edit</a>
-      
-       <%= form_tag artist_song_path(@artist, song), method: "delete" do %>
-        <%= submit_tag("Delete") %>
-      <% end %>
+  <li>
+    <%= render partial: "songs/song", locals: { song: song } %>
   </li>
 <% end %>
 </ul>

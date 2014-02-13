@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140213214551) do
     t.integer "year"
     t.integer "artist_id"
     t.text    "preview_url"
-    t.decimal "price"
+    t.decimal "price",       default: 1.99
   end
 
   create_table "users", force: true do |t|

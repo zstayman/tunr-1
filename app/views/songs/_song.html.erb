@@ -1,0 +1,19 @@
+<%= song.title %>, 
+<%= song.year %> 
+
+<audio controls>
+  <source src="<%= song.preview_url %>">
+</audio>
+
+<br/>
+
+<% if logged_in? %>
+  <%= link_to "Purchase", song_purchases_path(song), method: :post %>
+  <br/>
+<% end %>
+
+<%= link_to "Edit", edit_song_path(song) %>
+
+<%= form_tag song_path(song), method: "delete" do %>
+  <%= submit_tag("Delete") %>
+<% end %>
