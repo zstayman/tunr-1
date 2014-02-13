@@ -45,5 +45,9 @@ gem 'httparty'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry-rails', group: [:development, :test]
+group :development, :test do
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end
 
