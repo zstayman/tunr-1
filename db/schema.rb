@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140213214551) do
     t.string  "gender"
     t.string  "facebook_link"
     t.string  "password_digest"
-    t.decimal "balance"
+    t.decimal "balance",         default: 0.0
   end
 
 end
