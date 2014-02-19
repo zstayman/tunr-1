@@ -28,3 +28,5 @@
 
 A full list of user stories can be found by looking at [this Pivotal Tracker Project](https://www.pivotaltracker.com/s/projects/1012762)
 
+---
+###### Written by Jeff Konowitch, PJ Hughes, and Peter Lai
