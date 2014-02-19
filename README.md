@@ -12,7 +12,7 @@
 * Ruby on Rails 4.0.2
 * PostgreSQL Database
 * Authentication & Authorization from scratch using [bcrypt-ruby](http://bcrypt-ruby.rubyforge.org/)
-* [iTunes seach API](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
+* [iTunes search API](https://www.apple.com/itunes/affiliates/resources/documentation/itunes-store-web-service-search-api.html)
 * Testing using using [rspec-rails](https://github.com/rspec/rspec-rails) & [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
 
 ### User Stories Completed
