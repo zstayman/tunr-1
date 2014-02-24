@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 
-  before_action :load_artist, only: [:show, :edit, :update, :destroy]
+  before_action(:load_artist, { only: [:show, :edit, :update, :destroy] })
 
   def new
     @artist = Artist.new
@@ -23,7 +23,6 @@ class ArtistsController < ApplicationController
   end
 
   def update
-    binding.pry
     @artist.update(artist_params)
     redirect_to artists_path
   end
@@ -40,11 +39,7 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    return {
-      name: params[:name],
-      genre: params[:genre],
-      photo_url: params[:photo_url]
-    }
+    params.require(:artist).permit(:name, :genre, :photo_url)
   end
 
 end

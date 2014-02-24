@@ -5,3 +5,11 @@ development:
   pool: 5
   username: zacharystayman
   host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: tuner_test
+  pool: 5
+  username: zacharystayman
+  host: localhost

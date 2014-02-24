@@ -1,5 +1,11 @@
 <h2>Welcome <%= @user.first_name %>!</h2>
 
+<p>You have a balance of $<%= @user.balance.to_f %></p>
+
+<%= link_to "View my Songs", user_songs_path(@user) %>
+
+<%= link_to "Create Playlist", new_user_playlist_path(@user) %>
+
 <p><%= link_to "Edit My Info", edit_user_path(@user) %></p>
 
 <%= form_tag user_path(@user), method: "delete" do %>

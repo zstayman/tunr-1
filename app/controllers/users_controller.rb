@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
   
   before_action :load_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, :authorize, only: [:edit, :update]
 
   def new
     @user = User.new
+
+    render(:new)
   end
 
   def create
-    @user = User.create(user_params)
-    
-    if @user.valid?
+    @user = User.new(user_params)
+
+    if @user.save
       redirect_to user_path(@user)
     else
       render(:new)
@@ -35,6 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    session.destroy
     redirect_to root_path
   end
 
@@ -45,28 +49,18 @@ class UsersController < ApplicationController
   end
 
   def user_params
-
-    if params[:password].empty?
-      return {
-        email: params[:email],
-        first_name: params[:first_name],
-        last_name: params[:last_name],
-        dob: params[:dob],
-        gender: params[:gender],
-        facebook_link: params[:facebook_link]
-      }
-    else
-      return {
-        email: params[:email],
-        first_name: params[:first_name],
-        last_name: params[:last_name],
-        dob: params[:dob],
-        gender: params[:gender],
-        facebook_link: params[:facebook_link],
-        password: params[:password]
-      }
-    end
-
+    params.require(:user).permit(:email, :first_name, :last_name, :dob, :gender, :facebook_link, :password, :password_confirmation)
   end
 
+  def authenticate
+    unless logged_in?
+      redirect_to login_path
+    end
+  end
+
+  def authorize
+    unless current_user == @user
+      redirect_to login_path
+    end
+  end
 end
