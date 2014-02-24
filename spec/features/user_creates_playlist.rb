@@ -42,16 +42,17 @@ describe "a user can create a playlist" do
   end
 
   it "creates a playlist" do
-    visit "/login"
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
-    click_button "Log in!"
+    # Setup
+    login(user)
 
+    # Workflow for feature
+    visit user_path(user)
     click_link "Create Playlist"
-    fill_in :title, with: "Sweet Beats"
-    select tick_tock.title, from: "playlists_songs"
+    fill_in "Title", with: "Sweet Beats"
+    select tick_tock.title, from: "playlist_songs"
     click_button "Create"
 
+    # Expectations
     within ".playlist" do
       expect(page).to have_content "Sweet Beats"
 
@@ -60,5 +61,12 @@ describe "a user can create a playlist" do
         expect(page).to_not have_content love_is_my_drug.title
       end
     end
+  end
+
+  def login(user)
+    visit "/login"
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+    click_button "Log in!"
   end
 end
