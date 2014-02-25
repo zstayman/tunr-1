@@ -5,6 +5,8 @@ describe "a user can create a playlist" do
   let(:tick_tock) { FactoryGirl.create(:song, title: "Tick Tock") }
   let(:love_is_my_drug) { FactoryGirl.create(:song, title: "Love is my Drug") }
 
+ 
+
   before do
     user.purchase(tick_tock)
     user.purchase(love_is_my_drug)
