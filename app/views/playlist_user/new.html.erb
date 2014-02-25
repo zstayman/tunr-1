@@ -1,7 +1,7 @@
-<%= form_for [@playlist, @user], url: playlist_user_index_path do |f| %>
+<%= form_for @share, url: playlist_user_index_path do |f| %>
 
-  <%= f.label :users %>
-  <%= f.select :users, options_from_collection_for_select(User.all, :id, :first_name, :last_name), {}, { multiple: true } %>
+  <%= f.label :user_id %>
+  <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :first_name, :last_name), {}, { multiple: true } %>
 
   <%= f.submit "Share" %>
 <% end %>

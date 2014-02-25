@@ -1,17 +1,7 @@
 require 'spec_helper'
 
 describe "a user can share a playlist" do
-  let(:creator) do 
-    User.create!({
-      email: "j@k.co",
-      password: "jeff",
-      password_confirmation: "jeff",
-      first_name: "Jeff",
-      last_name: "K",
-      dob: Date.today,
-      balance: 100.00
-    }) 
-  end
+  let(:creator) {FactoryGirl.create(:user)}
 
   let(:shared) do 
     User.create!({
@@ -56,9 +46,9 @@ describe "a user can share a playlist" do
     visit user_path(creator)
     
     click_link "Share Playlist"
-    
-    select shared.first_name, from: "playlist_users"
-    within "#playlist_users" do
+    save_and_open_page
+    select shared.first_name, from: "playlist_user_user_id"
+    within "#playlist_user_user_id" do
       expect(page).to have_content shared.first_name
     end
    
