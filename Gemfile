@@ -53,3 +53,5 @@ group :development, :test do
   gem 'launchy'
 end
 
+gem 'factory_girl_rails'
+

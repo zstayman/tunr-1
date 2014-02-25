@@ -4,6 +4,9 @@ Tunr::Application.routes.draw do
       resources :purchases, only: [:create]
     end
   end
+  
+  
+    resources :playlist_user, only: [:new, :create]
 
   resources :users do
     resources :songs, only: [:index]

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :purchases
   has_many :songs, through: :purchases
+  has_many :playlist_users
+  has_many :playlists, through: :playlist_users
   has_many :playlists
 
   validates :email, presence: true, uniqueness: true
