@@ -39,8 +39,7 @@ describe "a user can share a playlist" do
 
   let(:playlist) do
     Playlist.create!({
-      title: "Test",
-      user: creator
+      title: "Test"
       })
   end
 
@@ -49,14 +48,15 @@ describe "a user can share a playlist" do
     
     login(creator)
     playlist
+    creator.playlists << playlist
     shared
     not_shared
-    # binding.pry
+    
     # Workflow
     visit user_path(creator)
     
     click_link "Share Playlist"
-    save_and_open_page
+    
     select shared.first_name, from: "playlist_users"
     within "#playlist_users" do
       expect(page).to have_content shared.first_name
